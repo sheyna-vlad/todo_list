@@ -1,4 +1,4 @@
-import React, {ChangeEvent, MouseEvent} from "react";
+import React, {ChangeEvent} from "react";
 import {FilterValuesType} from "./App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
@@ -26,9 +26,9 @@ type PropsType = {
 }
 const Todolist = (props: PropsType) => {
 
-    const onALLClickHandler = (e: MouseEvent<HTMLButtonElement>) => props.changeFilter("All", props.id);
-    const onActiveClickHandler = (e: MouseEvent<HTMLButtonElement>) => props.changeFilter("Active", props.id)
-    const onCompletedClickHandler = (e: MouseEvent<HTMLButtonElement>) => props.changeFilter("Compleated", props.id)
+    const onALLClickHandler = () => props.changeFilter("All", props.id);
+    const onActiveClickHandler = () => props.changeFilter("Active", props.id)
+    const onCompletedClickHandler = () => props.changeFilter("Compleated", props.id)
     const removeTodolist = () => {
         props.removeTodolist(props.id)
     }
@@ -53,7 +53,7 @@ const Todolist = (props: PropsType) => {
 
                     </h3>
                     < AddItemForm addItem={addTask}/>
-                    <ul style={{listStyle:"none", paddingLeft:"0"}}>
+                    <ul style={{listStyle: "none", paddingLeft: "0"}}>
                         {
                             props.tasks.map((t) => {
                                 const onRemoveHandler = () => props.removeTask(t.id, props.id)
@@ -67,21 +67,15 @@ const Todolist = (props: PropsType) => {
 
                                 return <li key={t.id} className={t.isDone ? 'is-done' : ''}>
                                     <Checkbox
-                                        color={"default"}
+                                        color={"primary"}
                                         onChange={onChangeStatusHandler}
                                         className={t.isDone ? 'is-done' : ''}
                                         checked={t.isDone}
                                     />
 
-                                    {/*<input type="checkbox"*/}
-                                    {/*       checked={t.isDone}*/}
-                                    {/*       onChange={onChangeStatusHandler}*/}
-                                    {/*       className={t.isDone ? 'is-done' : ''}*/}
-                                    {/*/>*/}
+
                                     <EditableSpan title={t.title} onChange={onChangeTitleHandler}/>
-                                    {/*<button*/}
-                                    {/*    onClick={onRemoveHandler}>x*/}
-                                    {/*</button>*/}
+
                                     <IconButton onClick={onRemoveHandler}>
                                         <Delete/>
                                     </IconButton>
@@ -94,19 +88,19 @@ const Todolist = (props: PropsType) => {
                         <Button
                             size={"medium"}
                             color={props.filter === 'All' ? "secondary" : 'primary'}
-                            variant={'text'}
+                            variant={props.filter === 'All' ? "contained" : 'text'}
                             onClick={onALLClickHandler}>All
                         </Button>
                         <Button
                             size={"medium"}
                             color={props.filter === 'Active' ? "secondary" : 'primary'}
-                            variant={'text'}
+                            variant={props.filter === 'Active' ? "contained" : 'text'}
                             onClick={onActiveClickHandler}>Active
                         </Button>
                         <Button
                             size={"medium"}
                             color={props.filter === 'Compleated' ? "secondary" : 'primary'}
-                            variant={'text'}
+                            variant={props.filter === 'Compleated' ? "contained" : 'text'}
                             onClick={onCompletedClickHandler}>Completed
                         </Button>
                     </div>

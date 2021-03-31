@@ -135,12 +135,12 @@ function App() {
 
             <Container fixed>
 
-                <Grid container style={{padding: " 20px 0 px"}}>
+                <Grid container style={{padding: " 20px"}}>
                     <AddItemForm addItem={addTodolist}/>
                 </Grid>
 
 
-                <Grid container spacing={3}>
+                <Grid container spacing={5}>
                     {
                         todolists.map((td) => {
                             let tasksForTodolist = tasksObj[td.id]
