@@ -63,9 +63,6 @@ function App() {
             setTasks({...tasksObj})
         }
     }
-
-
-
     function changeStatus(taskId: string, isDone: boolean, todolistId: string) {
         let tasks = tasksObj[todolistId];
         let task = tasks.find(t => t.id === taskId)
@@ -74,6 +71,9 @@ function App() {
             setTasks({...tasksObj})
         }
     }
+
+
+
 
     let [todolists, setTodolists] = useState<TodoListType[]>([
         {id: todolistId1, title: 'What to learn', filter: 'Active'},
@@ -87,8 +87,6 @@ function App() {
             setTodolists([...todolists]);
         }
     }
-
-
     function changeTodolistTitle(todolistId: string, newTitle: string) {
         const todolist = todolists.find(td => td.id === todolistId)
         if (todolist) {
@@ -96,18 +94,12 @@ function App() {
             setTodolists([...todolists]);
         }
     }
-
-
-
     function removeTodolist(todolistId: string) {
         let filteredTodolists = todolists.filter(t => t.id !== todolistId)
         setTodolists(filteredTodolists);
         delete tasksObj[todolistId];
         setTasks({...tasksObj});
     }
-
-
-
 
     function addTodolist(title: string) {
 

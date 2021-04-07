@@ -46,7 +46,6 @@ const Todolist = (props: PropsType) => {
             <div className="App">
                 <div>
                     <h3><EditableSpan title={props.title} onChange={changeTodolistTitle}/>
-                        {/*<Button onClick={removeTodolist}>x</Button>*/}
                         <IconButton onClick={removeTodolist}>
                             <Delete/>
                         </IconButton>
